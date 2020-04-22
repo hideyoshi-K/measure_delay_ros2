@@ -23,7 +23,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 
 include_directories(include)
-add_library(measure_delay SHARED src/send_image.cpp)
+add_library(measure_delay SHARED src/send_image.cpp src/measure_delay.cpp)
 
 target_compile_definitions(measure_delay PRIVATE "GREEER_BUILDING_DLL")
 ament_target_dependencies(measure_delay
@@ -34,6 +34,7 @@ ament_target_dependencies(measure_delay
   OpenCV
   )
 rclcpp_components_register_nodes(measure_delay "measure_delay_ros2::SendImage")
+rclcpp_components_register_nodes(measure_delay "measure_delay_ros2::MeasureDelay")
 
 ament_export_dependencies(ament_cmake)
 ament_export_dependencies(rclcpp)
